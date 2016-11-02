@@ -11,9 +11,9 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         path = reverse('detail', kwargs={'id': self.id})
-        return 'http://127.0.0.1:8000%s' % path
+        return "http://127.0.0.1:8000%s" % path
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
