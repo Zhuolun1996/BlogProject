@@ -4,6 +4,10 @@ from my_blog.models import Article
 from datetime import datetime
 from django.http import Http404
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from .forms import LoginForm,ArticleForm
 
 # Create your views here.
 
@@ -59,3 +63,43 @@ def blog_search(request):
                 return render(request, 'archives.html', {'post_list': post_list,
                                                          'error': False})
     return redirect('/')
+
+def login(request):
+    if request.method == 'GET':
+        form = LoginForm()
+        return render(request,'login.html', {'form': form})
+    else:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            user = auth.authenticate(username=username, password=password)
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                return redirect('/')
+            else:
+                return render(request,'login.html',{'form': form, 'password_is_wrong': True})
+        else:
+            return render(request,'login.html', {'form': form})
+
+@login_required(login_url="/login/")
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+@login_required(login_url="/login/")
+def makeArticle(request):
+    if request.method=='GET':
+        article = ArticleForm()
+        return render(request,'makeBlog.html',{'ArticleForm':article})
+    else:
+        article = ArticleForm(request.POST)
+        if article.is_valid():
+            title=request.POST.get('title')
+            category=request.POST.get('category')
+            date_time=request.POST.get('date_time')
+            content=request.POST.get('content')
+            Article.objects.create(title=title,category=category,date_time=date_time,content=content)
+            return redirect('/')
+        else:
+            return render(request,'makeBlog.html',{'ArticleForm': article})

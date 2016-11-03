@@ -24,4 +24,7 @@ urlpatterns = [
     url(r'^archives/$', myBlog_views.archives, name='archives'),
     url(r'^tag(?P<tag>\w+)/$', myBlog_views.search_tag, name='search_tag'),
     url(r'^search/$', myBlog_views.blog_search, name='search'),
+    url(r'^login/$',myBlog_views.login,name='login'),
+    url(r'^logout/$',myBlog_views.logout,name='logout'),
+    url(r'^makeBlog/$',myBlog_views.makeArticle,name='makeBlog'),
 ]

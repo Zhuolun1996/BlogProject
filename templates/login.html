@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if password_is_wrong %}
+        <h4>wrong username or password</h4>
+    {% endif %}
+        <form class="pure-form pure-form-stacked" action="/login/" method="post">
+            <legend>Login</legend>
+            <fieldset>
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </fieldset>
+        </form>
+{% endblock %}
