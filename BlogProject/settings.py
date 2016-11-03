@@ -151,7 +151,7 @@ MARKDOWN_DEUX_STYLES = {
             # `class` attribute put on `pre` tags to enable using
             # <http://code.google.com/p/google-code-prettify/> for syntax
             # highlighting.
-            "html-classes": {"pre": "prettyprint"},
+            "html-classes": {"pre": '''prettyprint" style="font-size: 0.8em;'''  },
             "cuddled-lists": None,
             "footnotes": None,
             "header-ids": None,
