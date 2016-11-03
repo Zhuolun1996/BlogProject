@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import re
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_blog',
     'gunicorn',
+    'markdown_deux',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,31 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
 )
 
+MARKDOWN_DEUX_STYLES = {
+    # Here is what http://code.activestate.com/recipes/ currently uses.
+    "recipe": {
+        "link_patterns": [
+            # Transform "Recipe 123" in a link.
+            (re.compile(r"recipe\s+#?(\d+)\b", re.I),
+             r"http://code.activestate.com/recipes/\1/"),
+        ],
+        "extras": {
+            "code-friendly": None,
+            "pyshell": None,
+            "demote-headers": 3,
+            "link-patterns": None,
+            # `class` attribute put on `pre` tags to enable using
+            # <http://code.google.com/p/google-code-prettify/> for syntax
+            # highlighting.
+            "html-classes": {"pre": "prettyprint"},
+            "cuddled-lists": None,
+            "footnotes": None,
+            "header-ids": None,
+            "fenced-code-blocks":None,
+            "markdown-in-html":None,
+            "numbering":None,
+
+        },
+        "safe_mode": "escape",
+    }
+}
