@@ -14,9 +14,9 @@
                     </p>
             </header>
 
-                <div class="post-description">
+                <div class="post-description" style="font-size: 0.8em;">
                     <p>
-                        {{ post.content|markdown:'recipe'|truncatewords:10 }}
+                        {{ post.content|markdown:'recipe'|truncatewords:20 }}
                     </p>
                 </div>
                 <a class="pure-button" href="{% url "detail" id=post.id %}">Read More >>> </a>
