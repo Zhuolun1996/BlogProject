@@ -1,4 +1,4 @@
 *.sqlite3
 
-*.pyc
+*.py[cod]
 db.sqlite3
