@@ -1,14 +1,21 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
 {% block content %}
     {% if password_is_wrong %}
-        <h4>wrong username or password</h4>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+            <strong>ERROR!</strong> Wrong password or username
+        </div>
     {% endif %}
-        <form class="pure-form pure-form-stacked" action="/login/" method="post">
-            <legend>Login</legend>
-            <fieldset>
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
-            </fieldset>
-        </form>
+    <form class="pure-form pure-form-stacked" action="/login/" method="post">
+        <legend>Login</legend>
+        {% csrf_token %}
+        {% bootstrap_form form layout="horizontal" %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% bootstrap_icon "star"%} Submit
+            </button>
+        {% endbuttons %}
+    </form>
 {% endblock %}

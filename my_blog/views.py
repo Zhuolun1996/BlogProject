@@ -29,7 +29,7 @@ def detail(request, id):
         post = Article.objects.get(id=str(id))
     except Article.DoesNotExist:
         raise Http404
-    return render(request, 'post.html', {'post': post})
+    return render(request, 'post.html', {'post': post,'title':post.title})
 
 
 def archives(request) :

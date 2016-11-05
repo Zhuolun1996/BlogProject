@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'my_blog',
     'gunicorn',
     'markdown_deux',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -133,33 +134,84 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
+#    ('css',os.path.join(STATIC_ROOT, 'css')),
+#    ('js',os.path.join(STATIC_ROOT,'js'))
 )
+
 
 MARKDOWN_DEUX_STYLES = {
     # Here is what http://code.activestate.com/recipes/ currently uses.
     "recipe": {
-        "link_patterns": [
-            # Transform "Recipe 123" in a link.
-            (re.compile(r"recipe\s+#?(\d+)\b", re.I),
-             r"http://code.activestate.com/recipes/\1/"),
-        ],
+
         "extras": {
-            "code-friendly": None,
-            "pyshell": None,
-            "demote-headers": 3,
-            "link-patterns": None,
+
             # `class` attribute put on `pre` tags to enable using
             # <http://code.google.com/p/google-code-prettify/> for syntax
             # highlighting.
-            "html-classes": {"pre": '''prettyprint" style="font-size: 0.8em;'''  },
-            "cuddled-lists": None,
-            "footnotes": None,
-            "header-ids": None,
+            "html-classes": {"pre": "prettyprint"  },
             "fenced-code-blocks":None,
-            "markdown-in-html":None,
-            "numbering":None,
 
         },
         "safe_mode": "escape",
     }
+}
+
+BOOTSTRAP3 = {
+
+    # The URL to the jQuery JavaScript file
+    'jquery_url': '//code.jquery.com/jquery.min.js',
+
+    # The Bootstrap base URL
+    'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/',
+
+    # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
+    'css_url': None,
+
+    # The complete URL to the Bootstrap CSS file (None means no theme)
+    'theme_url': None,
+
+    # The complete URL to the Bootstrap JavaScript file (None means derive it from base_url)
+    'javascript_url': None,
+
+    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
+    'javascript_in_head': False,
+
+    # Include jQuery with Bootstrap JavaScript (affects django-bootstrap3 template tags)
+    'include_jquery': False,
+
+    # Label class to use in horizontal forms
+    'horizontal_label_class': 'col-md-3',
+
+    # Field class to use in horizontal forms
+    'horizontal_field_class': 'col-md-9',
+
+    # Set HTML required attribute on required fields
+    'set_required': True,
+
+    # Set HTML disabled attribute on disabled fields
+    'set_disabled': False,
+
+    # Set placeholder attributes to label if no placeholder is provided
+    'set_placeholder': True,
+
+    # Class to indicate required (better to set this in your Django form)
+    'required_css_class': '',
+
+    # Class to indicate error (better to set this in your Django form)
+    'error_css_class': 'has-error',
+
+    # Class to indicate success, meaning the field has valid input (better to set this in your Django form)
+    'success_css_class': 'has-success',
+
+    # Renderers (only set these if you have studied the source and understand the inner workings)
+    'formset_renderers':{
+        'default': 'bootstrap3.renderers.FormsetRenderer',
+    },
+    'form_renderers': {
+        'default': 'bootstrap3.renderers.FormRenderer',
+    },
+    'field_renderers': {
+        'default': 'bootstrap3.renderers.FieldRenderer',
+        'inline': 'bootstrap3.renderers.InlineFieldRenderer',
+    },
 }

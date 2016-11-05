@@ -2,8 +2,10 @@
 {% load markdown_deux_tags %}
 {% block content %}
 
+
 <div class="posts">
     {% for post in post_list %}
+        {% if post.title != "" %}
         <section class="post">
             <header class="post-header">
                 <h2 class="post-title"><a href="{% url "detail" id=post.id %}">{{ post.title }}</a></h2>
@@ -16,10 +18,11 @@
 
                 <div class="post-description">
                     <p>
-                        {{ post.content|markdown:'recipe'|truncatewords:20 }}
+                        {{ post.content|markdown:'recipe'|truncatewords_html:10}}
                     </p>
                 </div>
                 <a class="pure-button" href="{% url "detail" id=post.id %}">Read More >>> </a>
+        {% endif %}
         </section>
     {% endfor %}
 
