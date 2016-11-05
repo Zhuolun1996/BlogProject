@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-     <form class= "form" action="/makeBlog/" method="post">
-         <legend>Make Blog</legend>
-            <fieldset>
+    {% load bootstrap3 %}
+
+    <form class="form" action="/makeBlog/" method="post">
+        <legend>Make Blog</legend>
+        <fieldset>
             {% csrf_token %}
-            {{ ArticleForm }}
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
-            </fieldset>
-     </form>
+            {% bootstrap_form ArticleForm layout="inline" %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% bootstrap_icon "star" %} Submit
+                </button>
+            {% endbuttons %}
+        </fieldset>
+    </form>
 {% endblock %}
