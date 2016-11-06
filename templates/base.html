@@ -86,18 +86,33 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container bs-docs-container">
     <div class="row">
-        <div class="container bs-docs-container">
+        <div class="col-md-9" role="main">
             {% block content %}
             {% endblock %}
         </div>
+        <div class="col-md-3">
+            <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="/archives/">归档</a>
+                    </li>
+                    <li>
+                        <a href="#">分类</a>
+                        <ul class="nav">
+                            <li><a href="/tagOpenWrt/">OpenWrt</a></li>
+                            <li><a href="/tagDjango/">Django</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+
 <footer class="bs-docs-footer" role="contentinfo">
     <div class="container">
-
-
         <p>Designed by ZZLL</p>
         <ul class="bs-docs-footer-links muted">
             <li><a href="#">About me</a></li>
