@@ -50,12 +50,12 @@ def search_tag(request, tag):
 
 
 def blog_search(request):
-    if 's' in request.GET:
-        s = request.GET['s']
-        if not s:
+    if 'search' in request.GET:
+        search_form = request.GET['search']
+        if not search_form:
             return render(request, 'home.html')
         else:
-            post_list = Article.objects.filter(title__icontains=s)
+            post_list = Article.objects.filter(title__icontains=search_form)
             if len(post_list) == 0:
                 return render(request, 'archives.html', {'post_list': post_list,
                                                          'error': True})
