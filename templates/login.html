@@ -8,7 +8,7 @@
             <strong>ERROR!</strong> Wrong password or username
         </div>
     {% endif %}
-    <form class="pure-form pure-form-stacked" action="/login/" method="post">
+    <form action="/login/" method="post">
         <legend>Login</legend>
         {% csrf_token %}
         {% bootstrap_form form layout="horizontal" %}
