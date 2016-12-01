@@ -16,7 +16,6 @@ import re
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -26,8 +25,8 @@ SECRET_KEY = 'sh4lj7b%$)$d2*@alkz395s=fip8hwjn5i0(2jg-o_=uu-b7j&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.linkzzll.com','linkzzll.com','127.0.0.1']
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.linkzzll.com', 'linkzzll.com', '127.0.0.1']
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BlogProject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -85,7 +83,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -105,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -119,7 +115,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
@@ -127,29 +122,27 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-#STATICFILES_FINDERS = (
+# STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.FileSystemFinder'
 #    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-#)
+# )
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
-#    ('css',os.path.join(STATIC_ROOT, 'css')),
-#    ('js',os.path.join(STATIC_ROOT,'js'))
+    #    ('css',os.path.join(STATIC_ROOT, 'css')),
+    #    ('js',os.path.join(STATIC_ROOT,'js'))
 )
-
 
 MARKDOWN_DEUX_STYLES = {
     # Here is what http://code.activestate.com/recipes/ currently uses.
     "recipe": {
 
         "extras": {
-
             # `class` attribute put on `pre` tags to enable using
             # <http://code.google.com/p/google-code-prettify/> for syntax
             # highlighting.
-            "html-classes": {"pre": "prettyprint"  },
-            "fenced-code-blocks":None,
+            "html-classes": {"pre": "prettyprint"},
+            "fenced-code-blocks": None,
 
         },
         "safe_mode": "escape",
@@ -204,7 +197,7 @@ BOOTSTRAP3 = {
     'success_css_class': 'has-success',
 
     # Renderers (only set these if you have studied the source and understand the inner workings)
-    'formset_renderers':{
+    'formset_renderers': {
         'default': 'bootstrap3.renderers.FormsetRenderer',
     },
     'form_renderers': {
