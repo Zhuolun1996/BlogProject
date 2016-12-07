@@ -20,7 +20,7 @@ from my_blog import views as myBlog_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', myBlog_views.home, name='home'),
-    url(r'^(?P<id>\d+)/$', myBlog_views.detail, name='detail'),
+    url(r'^detail(?P<id>\d+)/$', myBlog_views.detail, name='detail'),
     url(r'^archives/$', myBlog_views.archives, name='archives'),
     url(r'^tag(?P<tag>\w+)/$', myBlog_views.search_tag, name='search_tag'),
     url(r'^search/$', myBlog_views.blog_search, name='search'),
