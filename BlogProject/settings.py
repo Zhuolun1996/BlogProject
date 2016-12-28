@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sh4lj7b%$)$d2*@alkz395s=fip8hwjn5i0(2jg-o_=uu-b7j&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['blog.linkzzll.com', '127.0.0.1']
 # ALLOWED_HOSTS = []
